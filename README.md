@@ -23,7 +23,7 @@ Since we are using a 1000 Ohm and a 220 Ohm resistor, the calculation is `3.3V *
 
 1. Connect any IOT device that can output 3.3V to the power supply that is connected to the wall outlet that gets toggeled with the physical button.
 2. Connect it to the ESP8622 as displayed on the picture above.
-3. Install the code from `nodemcu_code.txt` onto the ESP8600 using the Arduino IDE (make sure to update the IP of your 
+3. Install the code from `nodemcu_code.txt` onto the ESP8600 using the Arduino IDE (make sure to update the IP of your webserver, as well as your WiFi SSID and password)
 4. On your raspberry pi, clone this repo and then copy `config.yaml.template` to `config.yaml` and configure it with your Hue bridge IP, token and the port that you configured when you flashed your ESP8600
 5. Add running this code to your crontab: `@reboot sh -c 'cd /path/to/your/app/folder && pm2 start index.js'`
 6. Start the server manually `sh -c 'cd /path/to/your/app/folder && pm2 start index.js'`

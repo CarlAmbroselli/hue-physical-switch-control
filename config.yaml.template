@@ -1,2 +1,4 @@
-token: abcdefg
-gatewayIp: 192.168.0.1
+token: "enter-token-here"
+gatewayIp: "192.168.178.52"
+hueLightName: "Küchenleiste"
+localServerPort: 10080

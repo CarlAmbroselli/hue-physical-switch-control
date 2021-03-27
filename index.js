@@ -30,7 +30,7 @@ async function handle(switchState) {
           "headers": {
                 "Content-Type": "application/json; charset=utf-8"
           },
-          "body": `{"on":${!lampState}}`
+          "body": `{"on":${!lampState}, "bri": 101}`
       }).then(() => { console.log("toggled lamp state to " + !lampState); });
     }); 
 }

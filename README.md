@@ -11,6 +11,8 @@ This library allows you to use a wall switch that controls an outlet to toggle a
 - Breadboard + Cables
 - Something that can run nodejs to talk to the bridge (I'm using a raspberry pi that is running homebridge anyhow)
 
+![Board Layout](https://github.com/CarlAmbroselli/hue-physical-switch-control/blob/main/layout.jpg?raw=true)
+
 ## Setup
 
 1. Connect any IOT device that can output 3.3V to the power supply that is connected to the wall outlet that gets toggeled with the physical button.

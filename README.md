@@ -11,6 +11,14 @@ This library allows you to use a wall switch that controls an outlet to toggle a
 - Breadboard + Cables
 - Something that can run nodejs to talk to the bridge (I'm using a raspberry pi that is running homebridge anyhow)
 
+![Board Layout](https://github.com/CarlAmbroselli/hue-physical-switch-control/blob/main/images/layout.jpg?raw=true)
+
+If you don't have the right resistors you can also use others. The ESP8622 can read currents of up to 1V, the NodeMCU version can even go up to 3.3V. Make sure to stay below these and use the following formula to calculate:
+
+<img width="200" alt="Formula" src="https://github.com/CarlAmbroselli/hue-physical-switch-control/blob/main/images/formula.png?raw=true">
+
+Since we are using a 1000 Ohm and a 220 Ohm resistor, the calculation is `3.3V * (220 / (220 + 1000)) = 0.6V` that we have here, which is fine. If you change these you will probably need to update the values in `nodemcu_code.txt` that are used as thresholds in the loop (I'm using `sensorValue > 150` and `sensorValue < 80`).
+
 ## Setup
 
 1. Connect any IOT device that can output 3.3V to the power supply that is connected to the wall outlet that gets toggeled with the physical button.

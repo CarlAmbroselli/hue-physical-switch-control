@@ -1,7 +1,7 @@
 const fs = require('fs')
 const YAML = require('yaml');
 const http = require('http');
-import axios from 'axios';
+const axios = require('axios');
 const url = require('url');
 const file = fs.readFileSync('./config.yaml', 'utf8')
 config = YAML.parse(file)
@@ -10,8 +10,8 @@ let lampKey = '-1';
 
 function init() {
   axios.get(`http://${config.gatewayIp}/api/${config.token}/lights`)
-  .then(hueStatus => {
-    lampKey = Object.keys(hueStatus).find(key => hueStatus[key].name === config.hueLightName);
+  .then(({data}) => {
+    lampKey = Object.keys(data).find(key => data[key].name === config.hueLightName);
     console.log("Ready!");
   });
 }
@@ -20,12 +20,12 @@ init();
 
 async function handle(switchState) {
   axios.get(`http://${config.gatewayIp}/api/${config.token}/lights/${lampKey}`)
-    .then(hueStatus => {
-      console.log(lampKey, hueStatus)
-      const lampState = hueStatus.state.on;
+    .then(({data}) => {
+      console.log(lampKey, data)
+      const lampState = data.state.on;
       axios.put(`http://${config.gatewayIp}/api/${config.token}/lights/${lampKey}/state`, {
         "on": !lampState,
-        "bri": 255
+        "bri": 254
       }).then(() => { console.log("toggled lamp state to " + !lampState + new Date()); });
     }); 
 }
